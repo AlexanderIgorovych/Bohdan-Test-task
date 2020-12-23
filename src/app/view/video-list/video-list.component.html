@@ -1,0 +1,19 @@
+<div *ngIf="(videos$ | async) === null && (error$ | async) === null">
+  <mat-spinner class="loader"></mat-spinner>
+</div>
+
+<div *ngIf="(error$ | async) as err" class="alert">
+    <strong>Error {{err.code}}!</strong> {{err.message}}
+</div>
+
+<div *ngIf="(videos$ | async) as videos" class="content">
+  <ag-grid-angular
+    (gridReady)="gridReady($event)"
+    [frameworkComponents]="frameworkComponents"
+    [gridOptions]="gridOptions"
+    [modules]="agGridModules"
+    [rowData]="videos"
+    class="ag-theme-alpine table"
+  >
+  </ag-grid-angular>
+</div>

@@ -1,0 +1,12 @@
+<div class="toolbar">
+  <div>
+    <input (change)="toggleSelection($event)" type="checkbox">
+    Selection mode
+  </div>
+  <div>
+    <span>Total records:{{(storeService.videos$ | async).length }} </span>
+  </div>
+  <div>
+    <span>Selected records:{{storeService.selectionCount$ | async }}  </span>
+  </div>
+</div>
